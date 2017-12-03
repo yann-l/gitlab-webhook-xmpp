@@ -1,0 +1,2 @@
+{{ push.user.name }} {% if push.object_attributes.action == 'open' %}created{% else %}{% if push.object_attributes.action == 'close' %}closed{% else %}modified{% endif %}{% endif %} an issue in _{{ push.project.name }}_ <{{ push.object_attributes.url }}>:
+ #{{ push.object_attributes.iid }}: <{{ push.object_attributes.title }}>

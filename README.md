@@ -36,7 +36,7 @@ Run gitlab-webhook-xmpp by command `twistd -n gitlab-webhook-xmpp -c /path/to/co
 ## Setup GitLab web hook
 
 Open GitLab project settings -> Web Hooks, add URL of server running gitlab-webhook-xmpp and
-check "Push events" as trigger. Press "Add Web Hook" button. You could test added web hook
+check "Push events", "Comments", "Issues events" and/or "Merge Request events" as trigger. Press "Add Web Hook" button. You could test added web hook
 by "Test Hook" button.
 
 ## Customising notification message

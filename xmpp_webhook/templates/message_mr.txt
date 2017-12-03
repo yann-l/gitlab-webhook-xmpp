@@ -1,0 +1,2 @@
+{{ push.user.name }} {% if push.object_attributes.action == 'open' %}proposed a new{% else %}{% if push.object_attributes.action == 'close' %}closed a{% else %}{% if push.object_attributes.action == 'merge' %}merged a{% else %}{% if push.object_attributes.action == 'update' %}updated a{% endif %}{% endif %}{% endif %}{% endif %} merge request for _{{ push.project.name }}/{{ push.object_attributes.target_branch }}_ <{{ push.object_attributes.url }}>:
+{{ push.object_attributes.title }}

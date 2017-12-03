@@ -1,0 +1,2 @@
+{{ push.user.name }} commented on commit #{% print push.commit.id[:8] %}: "{{ push.issue.title }}" of _{{ push.project.name }}_ <{{ push.object_attributes.url }}>:
+{{ push.object_attributes.note }}

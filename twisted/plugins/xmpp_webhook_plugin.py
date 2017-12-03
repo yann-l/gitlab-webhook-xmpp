@@ -95,7 +95,26 @@ class ServiceManager(object):
         Send message with push data to all XMPP handlers matching repository URL
         """
         repositoryUrl = pushData.get('repository').get('url')
-        template = self.templateEnvironment.get_template(self.templateName)
+        kind = pushData.get('object_kind')
+        if kind == 'push':
+            template_name = 'message_push.txt'
+        elif kind == 'issue':
+            template_name = 'message_issue.txt'
+        elif kind == 'merge_request':
+            template_name = 'message_mr.txt'
+        elif kind == 'note':
+            type_ = pushData.get('object_attributes').get('noteable_type')
+            if type_ == 'Issue':
+                template_name = 'message_note_issue.txt'
+            elif type_ == 'MergeRequest':
+                template_name = 'message_note_mr.txt'
+            elif type_ == 'Commit':
+                template_name = 'message_note_commit.txt'
+            else:
+                return
+        else:
+            return
+        template = self.templateEnvironment.get_template(template_name)
         for mucHandler in self.mucHandlers:
             if mucHandler.matchRepositoryMask(repositoryUrl):
                 mucHandler.sendMessage(template.render(push=pushData))

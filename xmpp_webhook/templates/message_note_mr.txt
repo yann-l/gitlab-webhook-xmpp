@@ -1,0 +1,2 @@
+{{ push.user.name }} commented on Merge Request #{{ push.merge_request.iid }}: "{{ push.merge_request.title }}" of _{{ push.project.name }}_ <{{ push.object_attributes.url }}>:
+{{ push.object_attributes.note }}
